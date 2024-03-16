@@ -3,17 +3,16 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
 COPY *.csproj .
 RUN dotnet restore
 
 # copy everything else and build app
 COPY . ./
 #WORKDIR /source/aspnetapp
-RUN dotnet publish --no-restore -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish --no-restore -c Release -o /app/publish
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Api.dll"]
