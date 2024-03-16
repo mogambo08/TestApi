@@ -10,7 +10,7 @@ RUN dotnet restore
 # copy everything else and build app
 COPY . ./
 #WORKDIR /source/aspnetapp
-RUN dotnet publish --no-restore -c Release -o /app/publish 
+RUN dotnet publish --no-restore -c Release -o /app/publish /p:UseAppHost=false
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
