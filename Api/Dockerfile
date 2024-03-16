@@ -8,7 +8,7 @@ COPY api/*.csproj ./api/
 RUN dotnet restore
 
 # copy everything else and build app
-COPY api/. ./api/
+COPY . .
 WORKDIR /source/aspnetapp
 RUN dotnet publish -c release -o /app --no-restore
 
