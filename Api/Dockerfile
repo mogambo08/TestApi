@@ -14,5 +14,5 @@ RUN dotnet publish --no-restore -c Release -o /app/publish /p:UseAppHost=false
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Api.dll"]
