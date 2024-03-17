@@ -14,5 +14,5 @@ RUN dotnet publish --no-restore -c Release -o out
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Api.dll"]
