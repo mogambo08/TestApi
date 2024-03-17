@@ -13,11 +13,11 @@ COPY ["Api.csproj", "."]
 RUN dotnet restore "./Api.csproj"
 COPY . .
 WORKDIR "/src/Api"
-RUN dotnet build "./Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "WebApplication1.csproj" -c Release -o /app/publish
+RUN dotnet publish "Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
