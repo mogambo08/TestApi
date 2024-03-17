@@ -9,10 +9,10 @@ RUN dotnet restore
 # copy everything else and build app
 COPY . ./
 #WORKDIR /source/aspnetapp
-RUN dotnet publish --no-restore -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish --no-restore -c Release -o out
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /app
-COPY --from=build /app .
+COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Api.dll"]
