@@ -29,4 +29,8 @@
     <None Include="D:\Users\Suat\source\repos\TestApi\Api\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dto\Dto.csproj" />
+  </ItemGroup>
+
 </Project>
