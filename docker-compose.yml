@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}mogambo08/testapi
+    container_name: c_testapi
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    ports:
+      - "1000:80"
+      - "1001:1000"  
