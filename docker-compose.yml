@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Api/Dockerfile
     environment:
-      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=postgres;Server=app_db;Port=5432;Database=SampleDbDriver;IntegratedSecurity=true;Pooling=true
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=postgres;Server=app_db;Port=5432;Database=SampleDb;IntegratedSecurity=true;Pooling=true
       - ASPNETCORE_URLS=http://+:80
     networks: 
       - dev
@@ -27,8 +27,8 @@ services:
     container_name: app_db
     environment: 
         - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=postres
-        - POSTGRES_DB=SampleDbDriver 
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=SampleDb 
     ports:
       - "5433:5432"
     restart: always
