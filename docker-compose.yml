@@ -27,7 +27,7 @@ services:
     container_name: app_db
     environment: 
         - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_PASSWORD=postres
         - POSTGRES_DB=SampleDbDriver 
     ports:
       - "5433:5432"
